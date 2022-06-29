@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../image/app_images.dart';
+import '../../../image/app_images.dart';
+
 import 'package:another_xlider/another_xlider.dart';
 
 class QuestionsFirst extends StatefulWidget {

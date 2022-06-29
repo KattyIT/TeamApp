@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'internal/application.dart';
+import 'package:meditation_app/presentation/MainScreen/questionnaires/questions_first.dart';
 
-import 'questionnaires/questions_first.dart';
+
+//import 'questionnaires/questions_first.dart';
 
 void main() {
   runApp(const MyApp());
