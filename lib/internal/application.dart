@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'internal/application.dart';
 
-import 'questionnaires/questions_first.dart';
-
-void main() {
-  runApp(const MyApp());
-}
+import '../presentation/HomeScreen/home.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,12 +9,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Test1',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black38,
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.blue,
       ),
-      home: const QuestionsFirst(),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
