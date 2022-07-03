@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/presentation/MainScreen/questionnaires/questions_first.dart';
+import 'package:meditation_app/presentation/ResultScreen/statistics.dart';
 
 
 //import 'questionnaires/questions_first.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black38,
         primarySwatch: Colors.teal,
       ),
-      home: const QuestionsFirst(),
+      home: const Statistics(title: 'fl_chart'),
     );
   }
 }

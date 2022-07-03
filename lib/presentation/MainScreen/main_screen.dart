@@ -67,7 +67,7 @@ class _MainScreenState extends State<MainScreen> {
                   Expanded(
                       child: SizedBox(
                           child: GridView.count(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     primary: false,
                     padding: const EdgeInsets.all(20),
@@ -76,6 +76,7 @@ class _MainScreenState extends State<MainScreen> {
                     crossAxisCount: 2,
                     children: <Widget>[
                       Container(
+
                         decoration: customBoxDecoration,
                         padding: const EdgeInsets.all(20),
                         child: const Text("Questionnarrie"),
