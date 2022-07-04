@@ -3,6 +3,10 @@ import '../../../image/app_images.dart';
 
 import 'package:another_xlider/another_xlider.dart';
 
+import '../../../image/logo.dart';
+import '../custom_style/custom_text_style.dart';
+import 'arguments_to_send.dart';
+
 class QuestionsFirst extends StatefulWidget {
   const QuestionsFirst({Key? key}) : super(key: key);
 
@@ -25,51 +29,55 @@ class QuestionsFirstState extends State {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Как сегодня Ваше самочувствие?',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white),
+    return MaterialApp(
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints:
+                BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
+            child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: ListView.builder(
+                    itemCount: 1,
+                    itemBuilder: (context, int index) {
+                      return Column(children: [
+                        Row(
+                          children: [
+                            logo(),
+                            Text(
+                              'How do you feel today?',
+                              style: customTextStyle(
+                                  'Arima', Colors.black, 24, FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        _levelOfSmth('Stress level'),
+                        _stressRow(),
+                        _levelOfSmth('Anxiety level'),
+                        _anxietyRow(),
+                        _levelOfSmth('Mood level'),
+                        _moodRow(),
+                        const SizedBox(height: 30,),
+                        _finalButton(),
+                      ]);
+                    })),
+          ),
         ),
-        backgroundColor: Colors.teal,
       ),
-      body: Container(
-          padding: EdgeInsets.all(10.0),
-          child: ListView.builder(
-              itemCount: 1,
-              itemBuilder: (context, int index) {
-                return Column(children: [
-                  _logo(),
-                  _levelOfSmth('Уровень стресса'),
-                  _stressRow(),
-                  _levelOfSmth('Уровень тревожности'),
-                  _anxietyRow(),
-                  _levelOfSmth('Уровень настроения'),
-                  _moodRow(),
-                  _finalButton(),
-                ]);
-              })),
-    );
-  }
-
-  Widget _logo() {
-    return Container(
-      margin: const EdgeInsets.all(10),
-      width: 100,
-      height: 100,
-      child: Image.asset(AppImages.logo),
     );
   }
 
   Widget _levelOfSmth(String _level) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(top: 10),
       child: Text(
         _level,
         textAlign: TextAlign.center,
-        style: const TextStyle(
-            fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+        style: customTextStyle('Arima', Colors.black, 20, FontWeight.bold),
       ),
     );
   }
@@ -82,26 +90,27 @@ class QuestionsFirstState extends State {
     } else if (_stress > 0) {
       _fontSizeRight = 15;
     }
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+    return Row(mainAxisAlignment: MainAxisAlignment.center,
+        //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
             width: 50,
-            child: Text(_stress.toString(),
-                style: TextStyle(
-                    fontSize: _fontSizeLeft,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white)),
+            child: Text(
+              _stress.toInt().toString(),
+              style: customTextStyle(
+                  'Arima', Colors.black, _fontSizeLeft, FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
           ),
           SizedBox(width: 250, child: _stressChanges()),
           SizedBox(
             width: 50,
-            child: Text(_stress.toString(),
-                style: TextStyle(
-                    fontSize: _fontSizeRight,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white)),
+            child: Text(
+              _stress.toInt().toString(),
+              style: customTextStyle(
+                  'Arima', Colors.black, _fontSizeRight, FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
           ),
         ]);
   }
@@ -120,20 +129,22 @@ class QuestionsFirstState extends State {
         children: [
           SizedBox(
             width: 50,
-            child: Text(_anxiety.toString(),
-                style: TextStyle(
-                    fontSize: _fontSizeLeft,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white)),
+            child: Text(
+              _anxiety.toInt().toString(),
+              style: customTextStyle(
+                  'Arima', Colors.black, _fontSizeLeft, FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
           ),
           SizedBox(width: 250, child: _anxietyChanges()),
           SizedBox(
             width: 50,
-            child: Text(_anxiety.toString(),
-                style: TextStyle(
-                    fontSize: _fontSizeRight,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white)),
+            child: Text(
+              _anxiety.toInt().toString(),
+              style: customTextStyle(
+                  'Arima', Colors.black, _fontSizeRight, FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
           ),
         ]);
   }
@@ -152,27 +163,29 @@ class QuestionsFirstState extends State {
         children: [
           SizedBox(
             width: 50,
-            child: Text(_mood.toString(),
-                style: TextStyle(
-                    fontSize: _fontSizeLeft,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white)),
+            child: Text(
+              _mood.toInt().toString(),
+              style: customTextStyle(
+                  'Arima', Colors.black, _fontSizeLeft, FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
           ),
           SizedBox(width: 250, child: _moodChanges()),
           SizedBox(
             width: 50,
-            child: Text(_mood.toString(),
-                style: TextStyle(
-                    fontSize: _fontSizeRight,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white)),
+            child: Text(
+              _mood.toInt().toString(),
+              style: customTextStyle(
+                  'Arima', Colors.black, _fontSizeRight, FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
           ),
         ]);
   }
 
   Widget _stressChanges() {
     return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(bottom: 8.0),
         child: FlutterSlider(
             values: [_stress],
             min: -6,
@@ -193,7 +206,7 @@ class QuestionsFirstState extends State {
             centeredOrigin: true,
             trackBar: FlutterSliderTrackBar(
               activeTrackBar: BoxDecoration(color: _trackBarColorStress),
-              inactiveTrackBar: BoxDecoration(color: Colors.white),
+              inactiveTrackBar: BoxDecoration(color: Colors.grey),
             ),
             onDragging: (handlerIndex, lowerValue, upperValue) {
               if (lowerValue >= 0) {
@@ -209,12 +222,12 @@ class QuestionsFirstState extends State {
 
   Widget _anxietyChanges() {
     return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(bottom: 8.0),
         child: FlutterSlider(
             values: [_anxiety],
             min: -6,
             max: 6,
-            step: FlutterSliderStep(step: 1),
+            step: const FlutterSliderStep(step: 1),
             handler: FlutterSliderHandler(
               decoration: BoxDecoration(),
               child: Material(
@@ -230,7 +243,7 @@ class QuestionsFirstState extends State {
             centeredOrigin: true,
             trackBar: FlutterSliderTrackBar(
               activeTrackBar: BoxDecoration(color: _trackBarColorAnxiety),
-              inactiveTrackBar: BoxDecoration(color: Colors.white),
+              inactiveTrackBar: BoxDecoration(color: Colors.grey),
             ),
             onDragging: (handlerIndex, lowerValue, upperValue) {
               if (lowerValue >= 0) {
@@ -246,12 +259,12 @@ class QuestionsFirstState extends State {
 
   Widget _moodChanges() {
     return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(bottom: 8.0),
         child: FlutterSlider(
             values: [_mood],
             min: -6,
             max: 6,
-            step: FlutterSliderStep(step: 1),
+            step: const FlutterSliderStep(step: 1),
             handler: FlutterSliderHandler(
               decoration: BoxDecoration(),
               child: Material(
@@ -267,7 +280,7 @@ class QuestionsFirstState extends State {
             centeredOrigin: true,
             trackBar: FlutterSliderTrackBar(
               activeTrackBar: BoxDecoration(color: _trackBarColorMood),
-              inactiveTrackBar: const BoxDecoration(color: Colors.white),
+              inactiveTrackBar: const BoxDecoration(color: Colors.grey),
             ),
             onDragging: (handlerIndex, lowerValue, upperValue) {
               if (lowerValue >= 0) {
@@ -284,25 +297,24 @@ class QuestionsFirstState extends State {
   Widget _finalButton() {
     return ElevatedButton(
       style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.teal),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
-      ))),
+            borderRadius: BorderRadius.circular(18.0),
+          ))),
       onPressed: () {
-        //
-        //   Future.delayed(
-        //       const Duration(seconds: 1),
-        //       () => Navigator.pushNamed(context, '/details',
-        //                   arguments: ArgumentsToSend(
-        //                     _stress,
-        //                     _anxiety,
-        //                     _mood,
-        //                   )););
-        //
+        Future.delayed(
+            const Duration(seconds: 1),
+            () => Navigator.pushNamed(context, '/recommendations',
+                arguments: ArgumentsToSend(
+                  _stress,
+                  _anxiety,
+                  _mood,
+                )));
       },
       child: const Text(
-        'Подобрать рекомендации',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        'Recommendations',
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, fontFamily: 'Arima'),
       ),
     );
   }
