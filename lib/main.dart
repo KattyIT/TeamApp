@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/presentation/MainScreen/questionnaires/questions_first.dart';
+import 'package:meditation_app/presentation/MainScreen/recommendations/breathe.dart';
+import 'package:meditation_app/presentation/MainScreen/recommendations/meditations.dart';
+import 'package:meditation_app/presentation/MainScreen/recommendations/move.dart';
+import 'package:meditation_app/presentation/MainScreen/recommendations/recommendations.dart';
 import 'package:meditation_app/presentation/ResultScreen/statistics.dart';
 
 
@@ -21,7 +25,15 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black38,
         primarySwatch: Colors.teal,
       ),
-      home: const Statistics(title: 'fl_chart'),
+      home: const QuestionsFirst(),
+      initialRoute: '/questions_first',
+      routes: {
+        '/questions_first': (context) => const QuestionsFirst(),
+        '/recommendations': (context) => const Recommendations(),
+        '/meditation_screen': (context) => const Meditations(),
+        '/breathe_screen':  (context) => const Breathe(),
+        '/move_screen': (context) => const Move(),
+      },
     );
   }
 }

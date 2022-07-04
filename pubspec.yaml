@@ -65,6 +65,9 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/IMG_0139.png
+    - assets/images/move.png
+    - assets/images/breathe.png
+    - assets/images/meditate.png
 
   fonts:
     - family: Arima

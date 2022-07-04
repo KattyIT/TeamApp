@@ -76,10 +76,9 @@ class _MainScreenState extends State<MainScreen> {
                     crossAxisCount: 2,
                     children: <Widget>[
                       Container(
-
                         decoration: customBoxDecoration,
                         padding: const EdgeInsets.all(20),
-                        child: const Text("Questionnarrie"),
+                        child: const Text("Questionnaire"),
                       ),
                       Container(
                         decoration: customBoxDecoration,
