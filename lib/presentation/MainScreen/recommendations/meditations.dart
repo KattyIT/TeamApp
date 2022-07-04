@@ -19,43 +19,41 @@ class _MeditationsState extends State<Meditations> {
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
-          child: ConstrainedBox(
-              constraints:
-                  BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-              child: Container(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  mainAxisSize: MainAxisSize.max,
+          child: Container(
+            padding:
+                const EdgeInsets.only(bottom: 10.0, left: 10, right: 10, top: 70),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        logo(),
-                        Text(
-                          'Meditation',
-                          style: customTextStyle(
-                              'Arima', Colors.black, 24, FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.teal),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                              ))),
-                      child: Text(message),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                    logo(),
+                    Text(
+                      'Meditation',
+                      style: customTextStyle(
+                          'Arima', Colors.black, 24, FontWeight.bold),
                     ),
                   ],
                 ),
-              )),
+                const SizedBox(
+                  height: 30,
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.teal),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ))),
+                  child: Text(message),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

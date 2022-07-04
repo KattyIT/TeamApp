@@ -14,49 +14,46 @@ class _BreatheState extends State<Breathe> {
   @override
   Widget build(BuildContext context) {
     var message = ModalRoute.of(context)?.settings.arguments as String;
-
     return MaterialApp(
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
-          child: ConstrainedBox(
-              constraints:
-              BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-              child: Container(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  mainAxisSize: MainAxisSize.max,
+          child: Container(
+            padding: const EdgeInsets.only(
+                bottom: 10.0, left: 10, right: 10, top: 70),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        logo(),
-                        Text(
-                          'Move',
-                          style: customTextStyle(
-                              'Arima', Colors.black, 24, FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    howToBreathe(message),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.teal),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                              ))),
-                      child: Text(message),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                    logo(),
+                    Text(
+                      'Breathing',
+                      style: customTextStyle(
+                          'Arima', Colors.black, 24, FontWeight.bold),
                     ),
                   ],
                 ),
-              )),
+                howToBreathe(message),
+                const SizedBox(
+                  height: 30,
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.teal),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ))),
+                  child: Text(message),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
