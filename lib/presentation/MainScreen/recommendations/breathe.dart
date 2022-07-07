@@ -39,17 +39,36 @@ class _BreatheState extends State<Breathe> {
                 const SizedBox(
                   height: 30,
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.teal),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ))),
-                  child: Text(message),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                          MaterialStateProperty.all(Colors.teal),
+                          shape: MaterialStateProperty.all<
+                              RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                              ))),
+                      child: Text(
+                        'Return',
+                        style: customTextStyle(
+                            'Arima', Colors.white, 20, FontWeight.bold),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    TextButton(
+                      child: Text(
+                        "Skip",
+                        style: customTextStyle(
+                            'Arima', Colors.teal, 20, FontWeight.bold),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
                 ),
               ],
             ),
