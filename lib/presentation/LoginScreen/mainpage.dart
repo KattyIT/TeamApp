@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/presentation/SplashScreen/splash.dart';
 
+import '../../const/colors.dart';
+import '../../const/strings.dart';
 import '../../services/auth.dart';
 
 void main() {
@@ -18,20 +20,20 @@ class MyApp extends StatelessWidget {
         future: Authentication.initializeFirebase(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Text('Что-то пошло не так');
+            return const Text(Strings.brokenConnection);
           }
           if (snapshot.connectionState == ConnectionState.done) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                backgroundColor: Color(0xff192028),
-                primarySwatch: Colors.blue,
+                backgroundColor: backgroundColor,
+               // primarySwatch: Colors.blue,
               ),
-              home: MyCustomSplashScreen(),
+              home: const MyCustomSplashScreen(),
             );
           }
           return CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xffA9DED8).withOpacity(.8)));
+              valueColor: AlwaysStoppedAnimation<Color>(aquamarineColor));
         });
   }
 }

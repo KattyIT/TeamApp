@@ -84,8 +84,10 @@ flutter:
       fonts:
         - asset: assets/fonts/FiraSans-SemiBoldItalic.ttf
           style: italic
-
-
+    - family: FuturaRenner
+      fonts:
+        - asset: assets/fonts/FuturaRenner-Regular.ttf
+          style: normal
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

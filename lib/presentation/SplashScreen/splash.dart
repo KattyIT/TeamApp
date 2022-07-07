@@ -1,11 +1,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+import '../../const/colors.dart';
+import '../../const/strings.dart';
 import '../LoginScreen/screens/sign_in.dart';
 
 
 
 class MyCustomSplashScreen extends StatefulWidget {
+  const MyCustomSplashScreen({Key? key}) : super(key: key);
+
   @override
   _MyCustomSplashScreenState createState() => _MyCustomSplashScreenState();
 }
@@ -25,7 +29,7 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
 
     animation1 = Tween<double>(begin: 40, end: 20).animate(CurvedAnimation(
         parent: _controller, curve: Curves.fastLinearToSlowEaseIn))
@@ -37,20 +41,20 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
 
     _controller.forward();
 
-    Timer(Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () {
       setState(() {
         _fontSize = 1.06;
       });
     });
 
-    Timer(Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () {
       setState(() {
         _containerSize = 2;
         _containerOpacity = 1;
       });
     });
 
-    Timer(Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 4), () {
       setState(() {
         Navigator.pushReplacement(context, PageTransition(LoginPage()));
       });
@@ -69,24 +73,25 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
     double _height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xff192028),
+      backgroundColor: backgroundColor,
       body: Stack(
         children: [
           Column(
             children: [
               AnimatedContainer(
-                  duration: Duration(milliseconds: 2500),
+                  duration: const Duration(milliseconds: 2500),
                   curve: Curves.fastLinearToSlowEaseIn,
                   height: _height / _fontSize),
               AnimatedOpacity(
-                duration: Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 1000),
                 opacity: _textOpacity,
                 child: Text(
-                  'WARRIORS OF WELLNESS',
+                  Strings.appTitle,
                   style: TextStyle(
-                      color: Colors.white.withOpacity(.7),
+                      color: Colors.white,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
+                      fontFamily: Strings.listOfFonts.mainFont,
                       letterSpacing: 1,
                       wordSpacing: 4),
                 ),
@@ -95,11 +100,11 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
           ),
           Center(
             child: AnimatedOpacity(
-              duration: Duration(milliseconds: 2500),
+              duration: const Duration(milliseconds: 2500),
               curve: Curves.fastLinearToSlowEaseIn,
               opacity: _containerOpacity,
               child: AnimatedContainer(
-                  duration: Duration(milliseconds: 2500),
+                  duration: const Duration(milliseconds: 2500),
                   curve: Curves.fastLinearToSlowEaseIn,
                   height: _width / _containerSize,
                   width: _width / _containerSize,
@@ -108,8 +113,7 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
                     color: Colors.transparent,
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  // child: Image.asset('assets/images/file_name.png')
-                  child: Image.asset('assets/images/logo.png')),
+                  child: Image.asset(Strings.listOfImages.logo)),
             ),
           ),
         ],
@@ -124,7 +128,7 @@ class PageTransition extends PageRouteBuilder {
   PageTransition(this.page)
       : super(
           pageBuilder: (context, animation, anotherAnimation) => page,
-          transitionDuration: Duration(milliseconds: 2000),
+          transitionDuration: const Duration(milliseconds: 2000),
           transitionsBuilder: (context, animation, anotherAnimation, child) {
             animation = CurvedAnimation(
               curve: Curves.fastLinearToSlowEaseIn,

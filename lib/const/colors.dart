@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+final Color backgroundColor = const Color(0xff131313);
+final Color aquamarineColor = const Color(0xff81acac);
+final Color titleColor = const Color(0xffffffff);
+
 final Color facebookColor = const Color(0xff39579A);
-final Color twitterColor = const Color(0xff00ABEA);
-final Color instaColor = const Color(0xffBE2289);
 final Color appleColor = const Color(0xffffffff);
-final Color linkedinColor = const Color(0xff0085E0);
-final Color githubColor = const Color(0xff202020);
 final Color googleColor = const Color(0xffDF4A32);

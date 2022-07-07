@@ -9,6 +9,9 @@ import '../../../services/auth.dart';
 import '../screens/details/painter.dart';
 import 'details/behavior.dart';
 
+import '../../../const/colors.dart';
+import '../../../const/strings.dart';
+
 
 class LogupPage extends StatefulWidget {
   const LogupPage({Key? key}) : super(key: key);
@@ -35,7 +38,7 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
 
     controller_1 = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         seconds: 5,
       ),
     );
@@ -66,7 +69,7 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
 
     controller_2 = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         seconds: 5,
       ),
     );
@@ -112,7 +115,7 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
     double heightScreen = MediaQuery.of(context).size.height;
     double widthScreen = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color(0xff192028),
+      backgroundColor: backgroundColor,
       body: ScrollConfiguration(
         behavior: Behavior(),
         child: SingleChildScrollView(
@@ -160,13 +163,14 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
                     Expanded(
                         flex: 4,
                         child: Padding(
-                          padding: EdgeInsets.only(top: heightScreen * .1),
+                          padding: EdgeInsets.only(top: heightScreen * .12),
                           child: Text(
-                            'WARRIORS OF WELLNESS',
+                            Strings.appTitle,
                             style: TextStyle(
-                                color: Colors.white.withOpacity(.7),
-                                fontSize: 26,
+                                color: titleColor,
+                                fontSize: 28,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: Strings.listOfFonts.mainFont,
                                 letterSpacing: 1,
                                 wordSpacing: 4),
                           ),
@@ -231,18 +235,19 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
           height: width / 7,
           width: width / 1.2,
           alignment: Alignment.center,
-          padding: EdgeInsets.only(right: width / 10),
+          padding: EdgeInsets.only(right: width / 15),
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(.05),
             borderRadius: BorderRadius.circular(15),
           ),
           child: TextFormField(
             validator: (value) {
-              if (value!.isEmpty) return 'enter name';
+              if (value!.isEmpty) return Strings.msgNameIsEmpty;
               return null;
             },
             style: TextStyle(
-              color: Colors.white.withOpacity(.8),
+              fontSize: 14,
+              color: titleColor,
             ),
             cursorColor: Colors.white,
             obscureText: false,
@@ -250,13 +255,13 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.account_circle_outlined,
-                color: Colors.white.withOpacity(.7),
+                color: titleColor,
               ),
               border: InputBorder.none,
               hintMaxLines: 1,
-              hintText: 'name',
+              hintText: Strings.hintName,
               hintStyle: TextStyle(
-                  fontSize: 14, color: Colors.white.withOpacity(.5)),
+                  fontSize: 14, color: titleColor),
               errorStyle: TextStyle(
                 height: 12,
                 color: Colors.red[400],
@@ -295,11 +300,12 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
               });
             },
             validator: (value) {
-              if (value!.isEmpty) return "isn't e-mail";
+              if (value!.isEmpty) return Strings.msgEmailIsEmpty;
               return null;
             },
             style: TextStyle(
-              color: Colors.white.withOpacity(.8),
+              fontSize:  14,
+              color: titleColor,
             ),
             cursorColor: Colors.white,
             obscureText: false,
@@ -307,16 +313,16 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.email_outlined,
-                color: Colors.white.withOpacity(.7),
+                color: titleColor,
               ),
               border: InputBorder.none,
               hintMaxLines: 1,
-              hintText: 'e-mail',
+              hintText: Strings.hintEmail,
               hintStyle: TextStyle(
-                  fontSize: 14, color: Colors.white.withOpacity(.5)),
-              errorStyle: TextStyle(
+                  fontSize: 14, color: titleColor),
+              errorStyle: const TextStyle(
                 height: 14,
-                color: Colors.red[400],
+                color: Colors.red,
                 fontSize: 12,
               ),
             ),
@@ -351,11 +357,12 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
               });
             },
             validator: (value) {
-              if (value!.isEmpty) return "isn't password";
+              if (value!.isEmpty) return Strings.msgPasswordIsEmpty;
               return null;
             },
             style: TextStyle(
-              color: Colors.white.withOpacity(.8),
+              fontSize: 16,
+              color: titleColor,
             ),
             cursorColor: Colors.white,
             obscureText: true,
@@ -363,16 +370,16 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.lock_outlined,
-                color: Colors.white.withOpacity(.7),
+                color: titleColor,
               ),
               border: InputBorder.none,
               hintMaxLines: 1,
-              hintText: 'password',
+              hintText: Strings.hintPassword,
               hintStyle: TextStyle(
-                  fontSize: 14, color: Colors.white.withOpacity(.5)),
-              errorStyle: TextStyle(
+                  fontSize: 14, color: titleColor),
+              errorStyle: const TextStyle(
                 height: 14,
-                color: Colors.red[400],
+                color: Colors.red,
                 fontSize: 12,
               ),
             ),
@@ -402,11 +409,11 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
           child: TextFormField(
             //controller: controller,
             validator: (value) {
-              if (value!.isEmpty) return "isn't password";
+              if (value!.isEmpty) return Strings.msgPasswordIsEmpty;
               return null;
             },
             style: TextStyle(
-              color: Colors.white.withOpacity(.8),
+              color: titleColor,
             ),
             cursorColor: Colors.white,
             obscureText: true,
@@ -414,16 +421,16 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
             decoration: InputDecoration(
               prefixIcon: Icon(
                 Icons.lock_outlined,
-                color: Colors.white.withOpacity(.7),
+                color: titleColor,
               ),
               border: InputBorder.none,
               hintMaxLines: 1,
-              hintText: 'confirm password',
+              hintText: Strings.hintConfirmPassword,
               hintStyle: TextStyle(
-                  fontSize: 14, color: Colors.white.withOpacity(.5)),
-              errorStyle: TextStyle(
+                  fontSize: 14, color: titleColor),
+              errorStyle: const TextStyle(
                 height: 14,
-                color: Colors.red[400],
+                color: Colors.red,
                 fontSize: 12,
               ),
             ),
@@ -455,51 +462,20 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
                 color: Colors.white.withOpacity(.05),
                 borderRadius: BorderRadius.circular(15)),
             child: Text(
-              'Зарегистироваться',
-              style: TextStyle(color: Colors.white.withOpacity(.8), letterSpacing: 1.5),
+              Strings.hintSignUp,
+              style: TextStyle(color: titleColor, letterSpacing: 1.5),
             ),
           ),
         ),
       ),
     );
   }
-
-
-  Widget _withoutAuthButtonElement(double width, double height) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-        child: InkWell(
-          highlightColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          onTap:  () {
-            HapticFeedback.lightImpact();
-            Fluttertoast.showToast(
-                msg: 'Create new account pressed');
-          },
-          child: Container(
-            height: width / 8,
-            width: width / 2,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(.05),
-                borderRadius: BorderRadius.circular(15)),
-            child: Text(
-              'Без авторизации',
-              style: TextStyle(color: Colors.white.withOpacity(.8), letterSpacing: 1.5),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
 
   showAlertDialog(BuildContext context) {
     // set up the button
     Widget okButton = TextButton(
-      child: Text("OK", style: TextStyle(color: Color(0xff192028))),
+      child:
+      Text(Strings.hintOkButton, style: TextStyle(color: backgroundColor)),
       onPressed: () {
         Navigator.of(context).pop();
       },
@@ -507,10 +483,18 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       backgroundColor: Colors.white,
-      title: Text("Пользовательское соглашение",
-          style: TextStyle(color: Color(0xff192028), fontSize: 14)),
-      content:
-      Text("Соглашаюсь на все", style: TextStyle(color: Color(0xff192028), fontSize: 12)),
+      title: Text(Strings.termsTitle,
+          style: TextStyle(
+            color: backgroundColor,
+            fontSize: 16,
+            fontFamily: Strings.listOfFonts.mainFont,
+          )),
+      content: Text(Strings.termsContent,
+          style: TextStyle(
+            color: backgroundColor,
+            fontSize: 14,
+            fontFamily: Strings.listOfFonts.mainFont,
+          )),
       actions: [
         okButton,
       ],
@@ -529,32 +513,34 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
     return Column(
       children: [
         Text(
-          'Нажимая кнопку, вы соглашаетесь с ',
+          Strings.termsLine,
           style: TextStyle(
-              color: Colors.white.withOpacity(.7),
+              color: titleColor,
               fontSize: 13,
               fontWeight: FontWeight.bold,
+              fontFamily: Strings.listOfFonts.mainFont,
               letterSpacing: 1,
               wordSpacing: 4),
         ),
         TextButton(
             onPressed: () => {showAlertDialog(context)},
             child: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 bottom: 5, // Space between underline and text
               ),
               decoration: BoxDecoration(
                   border: Border(
                       bottom: BorderSide(
-                        color: Colors.white.withOpacity(.7),
+                        color: titleColor,
                         width: 1.0, // Underline thickness
                       ))),
               child: Text(
-                'политикой конфиденциальности',
+                Strings.termsButton,
                 style: TextStyle(
-                    color: Colors.white.withOpacity(.7),
+                    color: titleColor,
                     fontSize: 13,
                     fontWeight: FontWeight.bold,
+                    fontFamily: Strings.listOfFonts.mainFont,
                     letterSpacing: 1,
                     wordSpacing: 4),
               ),
@@ -562,4 +548,38 @@ class _LogupPageState extends State<LogupPage> with TickerProviderStateMixin {
       ],
     );
   }
+
+
+  Widget _withoutAuthButtonElement(double width, double height) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+        child: InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          onTap: () {},
+          child: Container(
+            height: width / 8,
+            width: width / 1.7,
+            padding: const EdgeInsets.all(2),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Colors.white.withOpacity(.05),
+                borderRadius: BorderRadius.circular(15)),
+            child: Text(
+              Strings.hintWithoutLogin,
+              style: TextStyle(
+                color: titleColor,
+                fontSize: 16,
+                letterSpacing: 1.5,
+                fontFamily: Strings.listOfFonts.mainFont,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
 }
