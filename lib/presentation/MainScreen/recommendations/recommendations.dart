@@ -197,51 +197,51 @@ class _RecommendationsState extends State<Recommendations> {
 
     switch (stress.toInt()) {
       case 6:
-        text = 'Short antistress meditation';
+        text = 'L1QOh-n-eus';
         break;
       case 5:
-        text = 'Short antistress meditation';
+        text = 'L1QOh-n-eus';
         break;
       case 4:
-        text = 'Short antistress meditation';
+        text = 'L1QOh-n-eus';
         break;
       case 3:
-        text = 'A little bit longer meditation';
+        text = 'L1QOh-n-eus';
         break;
       case 2:
-        text = 'A little bit longer meditation';
+        text = '0QOuuGj_9_4';
         break;
       case 1:
-        text = 'A little bit longer meditation';
+        text = '0QOuuGj_9_4';
         break;
       case 0:
-        text = 'Standard meditation';
+        text = '0QOuuGj_9_4';
         break;
       case -1:
-        text = 'Standard meditation';
+        text = '0QOuuGj_9_4';
         break;
       case -2:
-        text = 'Standard meditation';
+        text = '0QOuuGj_9_4';
         break;
       case -3:
-        text = 'Standard meditation';
+        text = 'KD6Zr1V5CzQ';
         break;
       case -4:
-        text = 'Long and thorough meditation';
+        text = 'KD6Zr1V5CzQ';
         break;
       case -5:
-        text = 'Long and thorough meditation';
+        text = 'KD6Zr1V5CzQ';
         break;
       case -6:
-        text = 'Long and thorough meditation';
+        text = 'KD6Zr1V5CzQ';
         break;
       default:
         text = '0';
     }
+    videoForMeditation = text;
     Navigator.pushNamed(
       context,
-      '/meditation_screen',
-      arguments: text,
+      '/meditation_screen'
     );
   }
 
@@ -250,51 +250,51 @@ class _RecommendationsState extends State<Recommendations> {
 
     switch (_mood.toInt()) {
       case 6:
-        text = 'Exercises';
+        text = 'BPK9WNtpBgk';
         break;
       case 5:
-        text = 'Exercises';
+        text = 'BPK9WNtpBgk';
         break;
       case 4:
-        text = 'Exercises';
+        text = 'BPK9WNtpBgk';
         break;
       case 3:
-        text = 'Exercises';
+        text = 'BPK9WNtpBgk';
         break;
       case 2:
-        text = 'Exercises';
+        text = 'K2LnW1gF6Eg';
         break;
       case 1:
-        text = 'Exercises';
+        text = 'K2LnW1gF6Eg';
         break;
       case 0:
-        text = 'Exercises';
+        text = 'K2LnW1gF6Eg';
         break;
       case -1:
-        text = 'Exercises';
+        text = 'K2LnW1gF6Eg';
         break;
       case -2:
-        text = 'Exercises';
+        text = 'K2LnW1gF6Eg';
         break;
       case -3:
-        text = 'Exercises';
+        text = 'Sxddnugwu-8';
         break;
       case -4:
-        text = 'Exercises';
+        text = 'Sxddnugwu-8';
         break;
       case -5:
-        text = 'Exercises';
+        text = 'Sxddnugwu-8';
         break;
       case -6:
-        text = 'Exercises';
+        text = 'Sxddnugwu-8';
         break;
       default:
         text = '0';
     }
+    videoForMoving = text;
     Navigator.pushNamed(
       context,
       '/move_screen',
-      arguments: text,
     );
   }
 
