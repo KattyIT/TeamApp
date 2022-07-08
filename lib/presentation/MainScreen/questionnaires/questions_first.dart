@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import '../../../const/colors.dart';
+import '../../../const/custom_theme.dart';
+import '../../../const/strings.dart';
 import '../../../image/app_images.dart';
-
+import 'dart:io';
 import 'package:another_xlider/another_xlider.dart';
 
 import '../../../image/logo.dart';
 import '../custom_style/custom_text_style.dart';
 import 'arguments_to_send.dart';
+import 'package:path_provider/path_provider.dart';
 
 class QuestionsFirst extends StatefulWidget {
   const QuestionsFirst({Key? key}) : super(key: key);
@@ -18,9 +22,10 @@ class QuestionsFirstState extends State {
   double _stress = 0.0;
   double _anxiety = 0.0;
   double _mood = 0.0;
-  Color _trackBarColorStress = Colors.teal;
-  Color _trackBarColorAnxiety = Colors.teal;
-  Color _trackBarColorMood = Colors.teal;
+  Color _trackBarColorStress = aquamarineColor;
+  Color _trackBarColorAnxiety = aquamarineColor;
+  Color _trackBarColorMood = aquamarineColor;
+
 
   @override
   void initState() {
@@ -30,6 +35,7 @@ class QuestionsFirstState extends State {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: CustomTheme.darkTheme,
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
@@ -37,7 +43,7 @@ class QuestionsFirstState extends State {
             constraints:
                 BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
             child: Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: ListView.builder(
                     itemCount: 1,
                     itemBuilder: (context, int index) {
@@ -47,8 +53,7 @@ class QuestionsFirstState extends State {
                             logo(),
                             Text(
                               'How do you feel today?',
-                              style: customTextStyle(
-                                  'Arima', Colors.black, 24, FontWeight.bold),
+                              style: Theme.of(context).textTheme.headline1,
                             ),
                           ],
                         ),
@@ -61,8 +66,14 @@ class QuestionsFirstState extends State {
                         _anxietyRow(),
                         _levelOfSmth('Mood level'),
                         _moodRow(),
-                        const SizedBox(height: 30,),
-                        _finalButton(),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        _recommendationsButton(),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        _downloadButton(),
                       ]);
                     })),
           ),
@@ -77,7 +88,6 @@ class QuestionsFirstState extends State {
       child: Text(
         _level,
         textAlign: TextAlign.center,
-        style: customTextStyle('Arima', Colors.black, 20, FontWeight.bold),
       ),
     );
   }
@@ -86,9 +96,9 @@ class QuestionsFirstState extends State {
     double _fontSizeLeft = 0;
     double _fontSizeRight = 0;
     if (_stress < 0) {
-      _fontSizeLeft = 15;
+      _fontSizeLeft = 20;
     } else if (_stress > 0) {
-      _fontSizeRight = 15;
+      _fontSizeRight = 20;
     }
     return Row(mainAxisAlignment: MainAxisAlignment.center,
         //crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,8 +107,8 @@ class QuestionsFirstState extends State {
             width: 50,
             child: Text(
               _stress.toInt().toString(),
-              style: customTextStyle(
-                  'Arima', Colors.black, _fontSizeLeft, FontWeight.bold),
+              style: customTextStyle(Strings.listOfFonts.mainFont, titleColor,
+                  _fontSizeLeft, FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -107,8 +117,8 @@ class QuestionsFirstState extends State {
             width: 50,
             child: Text(
               _stress.toInt().toString(),
-              style: customTextStyle(
-                  'Arima', Colors.black, _fontSizeRight, FontWeight.bold),
+              style: customTextStyle(Strings.listOfFonts.mainFont, titleColor,
+                  _fontSizeRight, FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -119,9 +129,9 @@ class QuestionsFirstState extends State {
     double _fontSizeLeft = 0;
     double _fontSizeRight = 0;
     if (_anxiety < 0) {
-      _fontSizeLeft = 15;
+      _fontSizeLeft = 20;
     } else if (_anxiety > 0) {
-      _fontSizeRight = 15;
+      _fontSizeRight = 20;
     }
     return Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -131,8 +141,8 @@ class QuestionsFirstState extends State {
             width: 50,
             child: Text(
               _anxiety.toInt().toString(),
-              style: customTextStyle(
-                  'Arima', Colors.black, _fontSizeLeft, FontWeight.bold),
+              style: customTextStyle(Strings.listOfFonts.mainFont, titleColor,
+                  _fontSizeLeft, FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -141,8 +151,8 @@ class QuestionsFirstState extends State {
             width: 50,
             child: Text(
               _anxiety.toInt().toString(),
-              style: customTextStyle(
-                  'Arima', Colors.black, _fontSizeRight, FontWeight.bold),
+              style: customTextStyle(Strings.listOfFonts.mainFont, titleColor,
+                  _fontSizeRight, FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -153,9 +163,9 @@ class QuestionsFirstState extends State {
     double _fontSizeLeft = 0;
     double _fontSizeRight = 0;
     if (_mood < 0) {
-      _fontSizeLeft = 15;
+      _fontSizeLeft = 20;
     } else if (_mood > 0) {
-      _fontSizeRight = 15;
+      _fontSizeRight = 20;
     }
     return Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -165,8 +175,8 @@ class QuestionsFirstState extends State {
             width: 50,
             child: Text(
               _mood.toInt().toString(),
-              style: customTextStyle(
-                  'Arima', Colors.black, _fontSizeLeft, FontWeight.bold),
+              style: customTextStyle(Strings.listOfFonts.mainFont, titleColor,
+                  _fontSizeLeft, FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -175,8 +185,8 @@ class QuestionsFirstState extends State {
             width: 50,
             child: Text(
               _mood.toInt().toString(),
-              style: customTextStyle(
-                  'Arima', Colors.black, _fontSizeRight, FontWeight.bold),
+              style: customTextStyle(Strings.listOfFonts.mainFont, titleColor,
+                  _fontSizeRight, FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
@@ -210,7 +220,7 @@ class QuestionsFirstState extends State {
             ),
             onDragging: (handlerIndex, lowerValue, upperValue) {
               if (lowerValue >= 0) {
-                _trackBarColorStress = Colors.teal;
+                _trackBarColorStress = aquamarineColor;
               } else {
                 _trackBarColorStress = Colors.blueGrey;
               }
@@ -247,7 +257,7 @@ class QuestionsFirstState extends State {
             ),
             onDragging: (handlerIndex, lowerValue, upperValue) {
               if (lowerValue >= 0) {
-                _trackBarColorAnxiety = Colors.teal;
+                _trackBarColorAnxiety = aquamarineColor;
               } else {
                 _trackBarColorAnxiety = Colors.blueGrey;
               }
@@ -284,7 +294,7 @@ class QuestionsFirstState extends State {
             ),
             onDragging: (handlerIndex, lowerValue, upperValue) {
               if (lowerValue >= 0) {
-                _trackBarColorMood = Colors.teal;
+                _trackBarColorMood = aquamarineColor;
               } else {
                 _trackBarColorMood = Colors.blueGrey;
               }
@@ -294,14 +304,8 @@ class QuestionsFirstState extends State {
             }));
   }
 
-  Widget _finalButton() {
+  Widget _recommendationsButton() {
     return ElevatedButton(
-      style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.teal),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
-          ))),
       onPressed: () {
         Future.delayed(
             const Duration(seconds: 1),
@@ -314,8 +318,35 @@ class QuestionsFirstState extends State {
       },
       child: const Text(
         'Recommendations',
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, fontFamily: 'Arima'),
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
       ),
     );
+  }
+
+  Widget _downloadButton() {
+    return TextButton(
+      onPressed: () {
+        _save();
+      },
+      child: const Text(
+        'Download results',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
+
+  _save() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/my_file.txt');
+    final text =
+        'Today is ${DateTime.now()} \nYour stress level is $_stress,\nYour anxiety level is $_anxiety,\nYour mood level is $_mood';
+    await file.writeAsString(text);
+    print(text);
   }
 }

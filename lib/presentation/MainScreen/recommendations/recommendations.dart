@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/presentation/MainScreen/questionnaires/arguments_to_send.dart';
+import '../../../const/custom_theme.dart';
 import '../../../image/app_images.dart';
 import '../../../image/logo.dart';
 import '../custom_style/custom_text_style.dart';
@@ -19,18 +20,25 @@ class _RecommendationsState extends State<Recommendations> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as ArgumentsToSend;
+    final args = ModalRoute
+        .of(context)!
+        .settings
+        .arguments as ArgumentsToSend;
     _stress = args.stressLevel;
     _anxiety = args.anxietyLevel;
     _mood = args.moodLevel;
 
     return MaterialApp(
+      theme: CustomTheme.darkTheme,
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: ConstrainedBox(
             constraints:
-                BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
+            BoxConstraints(maxHeight: MediaQuery
+                .of(context)
+                .size
+                .height),
             child: Container(
                 padding: EdgeInsets.all(10.0),
                 child: ListView.builder(
@@ -45,8 +53,10 @@ class _RecommendationsState extends State<Recommendations> {
                                 logo(),
                                 Text(
                                   'Recommendations',
-                                  style: customTextStyle('Arima', Colors.black,
-                                      24, FontWeight.bold),
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .headline1,
                                 ),
                               ],
                             ),
@@ -76,12 +86,14 @@ class _RecommendationsState extends State<Recommendations> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _meditate(),
-            SizedBox(
+            const SizedBox(
               width: 180,
               child: Text(
-                'Are you ready to meditate?',
-                style:
-                    customTextStyle('Arima', Colors.black, 20, FontWeight.bold),
+                'Meditate',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -105,12 +117,14 @@ class _RecommendationsState extends State<Recommendations> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _breathe(),
-            SizedBox(
+            const SizedBox(
               width: 180,
               child: Text(
-                "Maybe you prefer to breathe?",
-                style:
-                    customTextStyle('Arima', Colors.black, 20, FontWeight.bold),
+                "Breathe",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -134,12 +148,14 @@ class _RecommendationsState extends State<Recommendations> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _move(),
-            SizedBox(
+            const SizedBox(
               width: 180,
               child: Text(
-                "Or do some exercises?",
-                style:
-                    customTextStyle('Arima', Colors.black, 20, FontWeight.bold),
+                "Move",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -157,9 +173,9 @@ class _RecommendationsState extends State<Recommendations> {
 
   Widget _skip() {
     return TextButton(
-      child: Text(
-        "Skip",
-        style: customTextStyle('Arima', Colors.teal, 20, FontWeight.bold),
+      child: const Text(
+          "Skip",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,),
       ),
       onPressed: () {},
     );
@@ -239,10 +255,7 @@ class _RecommendationsState extends State<Recommendations> {
         text = '0';
     }
     videoForMeditation = text;
-    Navigator.pushNamed(
-      context,
-      '/meditation_screen'
-    );
+    Navigator.pushNamed(context, '/meditation_screen');
   }
 
   void forMove(double mood) {

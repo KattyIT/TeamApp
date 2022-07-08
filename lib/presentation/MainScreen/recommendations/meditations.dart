@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:meditation_app/const/colors.dart';
 import 'package:meditation_app/presentation/MainScreen/questionnaires/arguments_to_send.dart';
 
 import 'package:another_xlider/another_xlider.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../../const/custom_theme.dart';
 import '../../../image/logo.dart';
 import '../custom_style/custom_text_style.dart';
 
@@ -19,8 +21,9 @@ class Meditations extends StatefulWidget {
 
 class _MeditationsState extends State<Meditations> {
   late YoutubePlayerController _controller;
+
   //late TextEditingController _idController;
- //late TextEditingController _seekToController;
+  //late TextEditingController _seekToController;
 
   late PlayerState _playerState;
   late YoutubeMetaData _videoMetaData;
@@ -45,8 +48,8 @@ class _MeditationsState extends State<Meditations> {
         enableCaption: true,
       ),
     )..addListener(listener);
-   // _idController = TextEditingController();
-   // _seekToController = TextEditingController();
+    // _idController = TextEditingController();
+    // _seekToController = TextEditingController();
     _videoMetaData = const YoutubeMetaData();
     _playerState = PlayerState.unknown;
   }
@@ -70,8 +73,8 @@ class _MeditationsState extends State<Meditations> {
   @override
   void dispose() {
     _controller.dispose();
-  //  _idController.dispose();
-   // _seekToController.dispose();
+    //  _idController.dispose();
+    // _seekToController.dispose();
     super.dispose();
   }
 
@@ -80,12 +83,7 @@ class _MeditationsState extends State<Meditations> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Youtube Player Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-        iconTheme: const IconThemeData(
-          color: Colors.teal,
-        ),
-      ),
+      theme: CustomTheme.darkTheme,
       home: YoutubePlayerBuilder(
         onEnterFullScreen: () {
           SystemChrome.setPreferredOrientations([
@@ -100,7 +98,7 @@ class _MeditationsState extends State<Meditations> {
         player: YoutubePlayer(
           controller: _controller,
           showVideoProgressIndicator: true,
-          progressIndicatorColor: Colors.teal,
+          progressIndicatorColor: aquamarineColor,
           onReady: () {
             _isPlayerReady = true;
           },
@@ -122,8 +120,7 @@ class _MeditationsState extends State<Meditations> {
                       logo(),
                       Text(
                         'Meditation',
-                        style: customTextStyle(
-                            'Arima', Colors.black, 24, FontWeight.bold),
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ],
                   ),
@@ -140,28 +137,24 @@ class _MeditationsState extends State<Meditations> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(Colors.teal),
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                  ))),
-                              child: Text(
+                              child: const Text(
                                 'Return',
-                                style: customTextStyle(
-                                    'Arima', Colors.white, 20, FontWeight.bold),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
                               ),
                               onPressed: () {
                                 //Navigator.popUntil(context, ModalRoute.withName('/questions_first'));
                               },
                             ),
                             TextButton(
-                              child: Text(
+                              child: const Text(
                                 "Skip",
-                                style: customTextStyle(
-                                    'Arima', Colors.teal, 20, FontWeight.bold),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
                               ),
                               onPressed: () {},
                             ),
@@ -231,8 +224,8 @@ class _MeditationsState extends State<Meditations> {
                         ),
                       ),
                     ),
-                    trackBar: const FlutterSliderTrackBar(
-                      activeTrackBar: BoxDecoration(color: Colors.teal),
+                    trackBar: FlutterSliderTrackBar(
+                      activeTrackBar: BoxDecoration(color: aquamarineColor),
                       inactiveTrackBar: BoxDecoration(color: Colors.grey),
                     ),
                     onDragging: (handlerIndex, lowerValue, upperValue) {

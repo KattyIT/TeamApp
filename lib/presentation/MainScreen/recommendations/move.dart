@@ -1,8 +1,10 @@
 import 'package:another_xlider/another_xlider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:meditation_app/const/colors.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../../const/custom_theme.dart';
 import '../../../image/logo.dart';
 import '../custom_style/custom_text_style.dart';
 import '../questionnaires/arguments_to_send.dart';
@@ -77,12 +79,7 @@ class _MoveState extends State<Move> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Youtube Player Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-        iconTheme: const IconThemeData(
-          color: Colors.teal,
-        ),
-      ),
+      theme: CustomTheme.darkTheme,
       home: YoutubePlayerBuilder(
         onEnterFullScreen: () {
           SystemChrome.setPreferredOrientations([
@@ -97,7 +94,7 @@ class _MoveState extends State<Move> {
         player: YoutubePlayer(
           controller: _controller,
           showVideoProgressIndicator: true,
-          progressIndicatorColor: Colors.teal,
+          progressIndicatorColor: aquamarineColor,
           onReady: () {
             _isPlayerReady = true;
           },
@@ -119,8 +116,7 @@ class _MoveState extends State<Move> {
                       logo(),
                       Text(
                         'Yoga practice',
-                        style: customTextStyle(
-                            'Arima', Colors.black, 24, FontWeight.bold),
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ],
                   ),
@@ -137,28 +133,21 @@ class _MoveState extends State<Move> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                  MaterialStateProperty.all(Colors.teal),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(18.0),
-                                      ))),
-                              child: Text(
+                              child: const Text(
                                 'Return',
-                                style: customTextStyle(
-                                    'Arima', Colors.white, 20, FontWeight.bold),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
                               ),
                               onPressed: () {
                                 //Navigator.popUntil(context, ModalRoute.withName('/questions_first'));
                               },
                             ),
                             TextButton(
-                              child: Text(
+                              child: const Text(
                                 "Skip",
-                                style: customTextStyle(
-                                    'Arima', Colors.teal, 20, FontWeight.bold),
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,),
                               ),
                               onPressed: () {},
                             ),
@@ -188,11 +177,11 @@ class _MoveState extends State<Move> {
           ),
           onPressed: _isPlayerReady
               ? () {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
-            setState(() {});
-          }
+                  _controller.value.isPlaying
+                      ? _controller.pause()
+                      : _controller.play();
+                  setState(() {});
+                }
               : null,
         ),
         Row(
@@ -202,11 +191,11 @@ class _MoveState extends State<Move> {
               icon: Icon(_muted ? Icons.volume_off : Icons.volume_up),
               onPressed: _isPlayerReady
                   ? () {
-                _muted ? _controller.unMute() : _controller.mute();
-                setState(() {
-                  _muted = !_muted;
-                });
-              }
+                      _muted ? _controller.unMute() : _controller.mute();
+                      setState(() {
+                        _muted = !_muted;
+                      });
+                    }
                   : null,
             ),
             SizedBox(
@@ -220,7 +209,7 @@ class _MoveState extends State<Move> {
                       decoration: BoxDecoration(),
                       child: Material(
                         type: MaterialType.canvas,
-                        color: Colors.teal,
+                        color: aquamarineColor,
                         //elevation: 3,
                         child: Container(
                           height: 20,
@@ -228,8 +217,8 @@ class _MoveState extends State<Move> {
                         ),
                       ),
                     ),
-                    trackBar: const FlutterSliderTrackBar(
-                      activeTrackBar: BoxDecoration(color: Colors.teal),
+                    trackBar: FlutterSliderTrackBar(
+                      activeTrackBar: BoxDecoration(color: aquamarineColor),
                       inactiveTrackBar: BoxDecoration(color: Colors.grey),
                     ),
                     onDragging: (handlerIndex, lowerValue, upperValue) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../const/custom_theme.dart';
 import '../../../image/logo.dart';
 import '../custom_style/custom_text_style.dart';
 
@@ -15,6 +16,7 @@ class _BreatheState extends State<Breathe> {
   Widget build(BuildContext context) {
     var message = ModalRoute.of(context)?.settings.arguments as String;
     return MaterialApp(
+      theme: CustomTheme.darkTheme,
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
@@ -28,10 +30,12 @@ class _BreatheState extends State<Breathe> {
                 Row(
                   children: [
                     logo(),
-                    Text(
+                    const Text(
                       'Breathing',
-                      style: customTextStyle(
-                          'Arima', Colors.black, 24, FontWeight.bold),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
                     ),
                   ],
                 ),
@@ -43,28 +47,22 @@ class _BreatheState extends State<Breathe> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                          MaterialStateProperty.all(Colors.teal),
-                          shape: MaterialStateProperty.all<
-                              RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                              ))),
-                      child: Text(
-                        'Return',
-                        style: customTextStyle(
-                            'Arima', Colors.white, 20, FontWeight.bold),
-                      ),
+                      child: const Text('Return',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          )),
                       onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
                     TextButton(
-                      child: Text(
+                      child: const Text(
                         "Skip",
-                        style: customTextStyle(
-                            'Arima', Colors.teal, 20, FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                       onPressed: () {},
                     ),
@@ -101,8 +99,6 @@ class _BreatheState extends State<Breathe> {
       padding: const EdgeInsets.all(10),
       child: Text(text,
           style: const TextStyle(
-              fontFamily: 'Arima',
-              color: Colors.black,
               fontSize: 20,
               fontWeight: FontWeight.bold,
               height: 1.5,
