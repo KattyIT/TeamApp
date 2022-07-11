@@ -31,6 +31,7 @@ dependencies:
   fl_chart: ^0.55.0
   youtube_player_flutter: ^8.0.0
   path_provider: ^2.0.11
+  avatar_view: ^1.0.1
 
 
 
@@ -78,6 +79,11 @@ flutter:
     - assets/images/move.png
     - assets/images/breathe.png
     - assets/images/meditate.png
+    - assets/images/Equinox.png
+    - assets/images/girl.png
+    - assets/images/man.png
+    - assets/images/utdallas.png
+    - assets/images/Amazon_logo.svg.png
 
   fonts:
     - family: Arima
